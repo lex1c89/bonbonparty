@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Примеры праздников{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Наши работы</h1>
+    <p>Вдохновляйтесь идеями для вашего праздника</p>
+</div>
+
+<div class="gallery-grid">
+    {% for item in gallery_items %}
+    <div class="gallery-card">
+        {% if item.type == "image" %}
+        <div class="gallery-image">
+            <img src="{{ item.url }}" alt="{{ item.title }}">
+        </div>
+        {% else %}
+        <div class="gallery-video">
+            <iframe src="{{ item.url }}" frameborder="0" allowfullscreen></iframe>
+        </div>
+        {% endif %}
+        <div class="gallery-caption">
+            <p>{{ item.title }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
